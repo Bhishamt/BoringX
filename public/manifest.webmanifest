@@ -1,0 +1,16 @@
+{
+  "name": "BoringX",
+  "short_name": "BoringX",
+  "description": "Small tools that each do one dull job, entirely in your browser.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#e9e8e4",
+  "theme_color": "#e9e8e4",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [{ "name": "Sandbox", "url": "/sandbox" }]
+}
