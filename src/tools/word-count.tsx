@@ -4,7 +4,7 @@ import { toolFromRecipe } from "@/components/toolFromRecipe";
 export const meta: ToolMeta = {
   slug: "word-count", name: "Word Count", category: "Text",
   blurb: "Counts words, characters, sentences and reading time.",
-  description: "Count words, characters, sentences, paragraphs and reading time. Runs in your browser, nothing is uploaded.",
+  description: "Count words, characters, sentences, paragraphs and reading time. Punctuation, symbols and emoji do not count as words. Runs in your browser, nothing is uploaded.",
   keywords: ["words", "characters", "count", "length", "reading time"],
   recipe: {
     name: "Word Count",
@@ -14,7 +14,9 @@ export const meta: ToolMeta = {
 };
 
 export function countText(s: string) {
-  const words = (s.match(/\S+/g) ?? []).length;
+  // Word-aware segmentation: punctuation, symbols and emoji are not word-like.
+  const segments = new Intl.Segmenter(undefined, { granularity: "word" }).segment(s);
+  const words = [...segments].filter((x) => x.isWordLike).length;
   const sentences = (s.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) ?? []).filter((x) => x.trim()).length;
   const paragraphs = s.split(/\n\s*\n/).filter((x) => x.trim()).length;
   return {
