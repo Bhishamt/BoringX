@@ -10,6 +10,7 @@ export default function Privacy() {
       <h2 className="cat-h">Why you can believe that</h2>
       <p>Every page is served with a Content-Security-Policy whose <code>connect-src</code> is limited to this site itself (plus <code>blob:</code> and <code>data:</code>, which are local to your browser). The browser refuses any attempt by the page, or by code you run in the Sandbox, to send data to another host. You can check it: open developer tools, look at the Network tab while you use a tool, and read the response headers.</p>
       <p>The Custom JavaScript block runs in a Worker served with <code>connect-src &apos;none&apos;</code>, so it cannot make network requests at all.</p>
+      <p>One page is slightly looser: Remove Background adds <code>&apos;unsafe-eval&apos;</code> to <code>script-src</code>, because its machine-learning runtime needs it. Its <code>connect-src</code> is the same as everywhere else. The model, the OCR engine and the AVIF encoder are all served from this site, never from a CDN.</p>
       <h2 className="cat-h">What is stored</h2>
       <ul>
         <li>Your theme choice and any Sandbox tools you save, in your browser&apos;s local storage. They never leave your device. Clear them any time in your browser settings.</li>

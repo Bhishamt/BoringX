@@ -13,6 +13,10 @@ const copy = (from, to) => {
 
 copy(nm("pdfjs-dist/build/pdf.worker.min.mjs"), pub("pdf.worker.min.mjs"));
 
+// AVIF encoder (single-threaded WebAssembly), loaded at runtime only when the browser cannot encode AVIF itself
+copy(nm("@jsquash/avif/codec/enc/avif_enc.js"), pub("codecs/avif_enc.js"));
+copy(nm("@jsquash/avif/codec/enc/avif_enc.wasm"), pub("codecs/avif_enc.wasm"));
+
 // tesseract: worker, wasm cores, english data
 copy(nm("tesseract.js/dist/worker.min.js"), pub("tesseract/worker.min.js"));
 for (const f of fs.readdirSync(nm("tesseract.js-core"))) {

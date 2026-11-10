@@ -39,6 +39,8 @@ export type ToolMeta = {
   /** SEO description */
   description: string;
   keywords: string[];
+  /** Needs its own, slightly looser CSP header (see vercel.json), so links to it do a full page load. */
+  hardNav?: boolean;
   /** If present, the tool can be taken apart into these blocks. */
   recipe?: Recipe;
 };

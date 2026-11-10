@@ -32,7 +32,14 @@ export const blocks: BlockDef[] = [
     run: async (input) => { if (!input.trim()) throw new Error("Nothing to convert. Paste some CSV."); return toB64(await csvToXlsx(input)); } },
   { id: "xlsx-to-csv", name: "Excel (base64) to CSV", category: "Data", description: "Reads a base64 .xlsx/.xls workbook and outputs one sheet as CSV.",
     params: [text("sheet", "Sheet name (blank for first)", "")],
-    run: async (input, p) => { try { return (await xlsxToCsv(input.trim(), String(p.sheet), "base64")).csv; } catch { throw new Error("Input is not a base64-encoded Excel workbook."); } } },
+    run: async (input, p) => {
+      const t = input.trim();
+      // A real workbook is a ZIP ("PK") for .xlsx/.ods or an OLE container (D0CF11E0) for .xls. SheetJS would otherwise guess "text".
+      let head = "";
+      try { head = atob(t.slice(0, 16).padEnd(Math.ceil(Math.min(t.length, 16) / 4) * 4, "=")); } catch { /* handled below */ }
+      if (!/^PK|^\xD0\xCF\x11\xE0/.test(head)) throw new Error("Input is not a base64-encoded Excel workbook (.xlsx, .xls or .ods). Produce one with the CSV to Excel block.");
+      try { return (await xlsxToCsv(t, String(p.sheet), "base64")).csv; } catch { throw new Error("This workbook could not be read. It may be damaged or password protected."); }
+    } },
 ];
 
 export default function Tool() {

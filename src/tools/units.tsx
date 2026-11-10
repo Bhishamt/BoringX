@@ -7,7 +7,7 @@ export const meta: ToolMeta = {
   blurb: "Length, mass, volume, speed, area, data, time and temperature.",
   description: "Convert units of length, mass, volume, area, speed, data size, time and temperature. Write '10 km to mi' or just '10 km' to see every unit.",
   keywords: ["units", "convert", "metric", "imperial", "length", "weight", "temperature"],
-  recipe: { name: "Units", input: "10 km to mi\n72 f to c\n5 lb to kg\n1 gb to mb\n100 km/h to mph\n2 cups", steps: [{ b: "units", p: { precision: 4 } }] },
+  recipe: { name: "Units", input: "10 km to mi\n72 f to c\n5 lb to kg\n1 gb to mb\n100 km/h to mph\n2 cups", steps: [{ b: "units", p: { precision: 6 } }] },
 };
 
 type U = { to: number; names: string[] }; // factor to base unit
@@ -37,11 +37,11 @@ function conv(v: number, a: Found & object, b: Found & object): number {
   if (a.dim === "temperature") return fromC(toC(v, a.key), b.key);
   return (v * D[a.dim][a.key].to) / D[a.dim][b.key].to;
 }
-const fmt = (n: number, p: number) => (Math.abs(n) >= 1e15 || (Math.abs(n) < 1e-6 && n !== 0) ? n.toExponential(p) : String(Number(n.toPrecision(p + 2))));
+const fmt = (n: number, p: number) => (Math.abs(n) >= 1e15 || (Math.abs(n) < 1e-6 && n !== 0) ? n.toExponential(p) : String(Number(n.toPrecision(p))));
 
 export const blocks: BlockDef[] = [{
   id: "units", name: "Units", category: "Convert", description: "One conversion per line: '10 km to mi'.",
-  params: [num("precision", "Significant digits", 4, 1, 12)],
+  params: [num("precision", "Significant digits", 6, 1, 12)],
   run: (input, p) => {
     const prec = Number(p.precision);
     const lines = input.split("\n").map((l) => l.trim()).filter(Boolean);

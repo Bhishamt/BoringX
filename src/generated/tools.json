@@ -134,7 +134,8 @@
       "png",
       "ai",
       "imgly"
-    ]
+    ],
+    "hardNav": true
   },
   {
     "slug": "strip-exif",
@@ -806,7 +807,7 @@
         {
           "b": "units",
           "p": {
-            "precision": 4
+            "precision": 6
           }
         }
       ]

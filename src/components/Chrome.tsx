@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { tools } from "@/lib/tools";
 
 export function ThemeToggle() {
   const [t, setT] = useState<"light" | "dark">("light");
@@ -14,7 +15,7 @@ export function ThemeToggle() {
 }
 
 export function SearchButton() {
-  return <button type="button" className="btn" onClick={() => window.dispatchEvent(new Event("boringx:palette"))} aria-label="Search tools (Command K)">Search <kbd>⌘K</kbd></button>;
+  return <button type="button" className="btn" onClick={() => window.dispatchEvent(new Event("boringx:palette"))}>Search <kbd>⌘K</kbd></button>;
 }
 
 export function Header() {
@@ -34,6 +35,25 @@ export function Header() {
 export function SwRegister() {
   useEffect(() => {
     if ("serviceWorker" in navigator && location.protocol === "https:" || location.hostname === "localhost") navigator.serviceWorker?.register("/sw.js").catch(() => {});
+  }, []);
+  return null;
+}
+
+const HARD = new Set(tools.filter((t) => t.hardNav).map((t) => "/" + t.slug));
+/** Pages with their own CSP must be loaded (and left) with a real navigation, not a client-side route change. */
+export function HardNav() {
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as HTMLElement).closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+      const u = new URL(a.href, location.href);
+      if (u.origin !== location.origin) return;
+      if (u.pathname === location.pathname && u.hash) return;
+      if (HARD.has(u.pathname) || document.documentElement.dataset.hard) { e.preventDefault(); e.stopPropagation(); location.assign(u.href); }
+    };
+    window.addEventListener("click", onClick, true);
+    return () => window.removeEventListener("click", onClick, true);
   }, []);
   return null;
 }

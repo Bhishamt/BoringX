@@ -37,7 +37,10 @@ export function Palette() {
   useEffect(() => { if (open) input.current?.focus(); else prev.current?.focus?.(); }, [open]);
 
   if (!open) return null;
-  const go = (i: Item) => { setOpen(false); router.push(i.href); };
+  const go = (i: Item) => {
+    setOpen(false);
+    if (document.documentElement.dataset.hard || tools.some((t) => t.hardNav && i.href === `/${t.slug}`)) location.assign(i.href); else router.push(i.href);
+  };
   return (
     <div className="palette-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
       <div className="palette" role="dialog" aria-modal="true" aria-label="Command palette">

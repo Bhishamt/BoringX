@@ -9,6 +9,7 @@ export const meta: ToolMeta = {
   blurb: "Cuts the subject out of a photo. The model runs on your device.",
   description: "Remove image backgrounds in your browser with an on-device AI model. No upload, no account, no watermark. First use downloads the model from this site once.",
   keywords: ["background", "remove", "cutout", "transparent", "png", "ai", "imgly"],
+  hardNav: true, // its ONNX runtime needs eval; only this page gets a CSP with unsafe-eval (connect-src stays self)
 };
 
 export default function Tool() {
@@ -17,16 +18,19 @@ export default function Tool() {
   const [stage, setStage] = useState("");
   const job = useJob();
   const srcUrl = useObjectUrl(file); const outUrl = useObjectUrl(out);
-  useEffect(() => { sampleImage("Sample", 640, 420, "image/jpeg", 20).then(setFile); }, []);
+  useEffect(() => { document.documentElement.dataset.hard = "1"; sampleImage("Sample", 640, 420, "image/jpeg", 20).then(setFile); }, []);
 
   const run = () => job.run(async (progress) => {
     if (!file) throw new Error("Choose an image first.");
     setOut(null); setStage("Loading the model (about 45 MB, cached after the first time)");
     const { removeBackground } = await import("@imgly/background-removal");
     const blob = await removeBackground(file, {
-      publicPath: `${location.origin}/imgly/`, model: "isnet_quint8", device: "cpu", output: { format: "image/png" },
+      publicPath: `${location.origin}/imgly/`, model: "small", output: { format: "image/png" },
       progress: (key: string, cur: number, total: number) => { setStage(key.startsWith("fetch") ? "Loading the model" : "Removing background"); if (total) progress(cur / total); },
-    }).catch((e: unknown) => { throw new Error(`Background removal failed: ${e instanceof Error ? e.message : "unknown error"}. Try a smaller image, or a browser with WebAssembly SIMD (any recent Chrome, Edge, Firefox, Safari).`); });
+    }).catch((e: unknown) => {
+      if (e instanceof Error && /unsafe-eval|Content Security Policy/.test(e.message)) throw new Error("This page was opened in a way that blocks its model runtime. Reload the page (it needs a fresh load), then try again.");
+      throw new Error(`Background removal failed: ${e instanceof Error ? e.message : "unknown error"}. Try a smaller image, or a browser with WebAssembly SIMD (any recent Chrome, Edge, Firefox, Safari).`);
+    });
     setOut(blob);
   });
 

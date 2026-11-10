@@ -4,7 +4,7 @@ import "@fontsource/ibm-plex-mono/latin-600.css";
 import "@fontsource/ibm-plex-sans/latin-400.css";
 import "@fontsource/ibm-plex-sans/latin-600.css";
 import "./globals.css";
-import { Header, SwRegister } from "@/components/Chrome";
+import { Header, HardNav, SwRegister } from "@/components/Chrome";
 import { Palette } from "@/components/Palette";
 import { SITE } from "@/lib/tools";
 
@@ -39,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <Palette />
         <SwRegister />
+        <HardNav />
       </body>
     </html>
   );
