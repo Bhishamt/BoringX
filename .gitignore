@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+public/imgly
+public/tesseract
+public/pdf.worker.min.mjs
+test-results
+playwright-report
+.vercel
+.lighthouse
