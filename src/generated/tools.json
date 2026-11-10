@@ -1,0 +1,918 @@
+[
+  {
+    "slug": "images-to-pdf",
+    "name": "Images to PDF",
+    "category": "PDF",
+    "blurb": "Puts images on pages, one per page, in your order.",
+    "description": "Combine JPG, PNG and WebP images into a single PDF in your browser. Choose page size and margins. No upload.",
+    "keywords": [
+      "images",
+      "pdf",
+      "jpg to pdf",
+      "png to pdf",
+      "convert",
+      "combine"
+    ]
+  },
+  {
+    "slug": "pdf-compress",
+    "name": "PDF Compress",
+    "category": "PDF",
+    "blurb": "Shrinks a PDF. Light tidy-up, or flatten pages to images.",
+    "description": "Reduce PDF file size in your browser. Choose a lossless tidy-up or flatten pages to compressed images for scans. No upload.",
+    "keywords": [
+      "pdf",
+      "compress",
+      "reduce size",
+      "shrink",
+      "optimize"
+    ]
+  },
+  {
+    "slug": "pdf-merge",
+    "name": "PDF Merge",
+    "category": "PDF",
+    "blurb": "Joins PDFs into one, in the order you choose.",
+    "description": "Merge PDF files into a single document in your browser. No upload, no page limit, no watermark.",
+    "keywords": [
+      "pdf",
+      "merge",
+      "combine",
+      "join",
+      "pdf-lib"
+    ]
+  },
+  {
+    "slug": "pdf-split",
+    "name": "PDF Split",
+    "category": "PDF",
+    "blurb": "Pulls pages out of a PDF by range, or one file per page.",
+    "description": "Split a PDF by page ranges or into one file per page, in your browser. No upload.",
+    "keywords": [
+      "pdf",
+      "split",
+      "extract pages",
+      "separate",
+      "range"
+    ]
+  },
+  {
+    "slug": "pdf-to-images",
+    "name": "PDF to Images",
+    "category": "PDF",
+    "blurb": "Renders each PDF page as a PNG or JPG.",
+    "description": "Convert PDF pages to PNG or JPG images in your browser at the resolution you choose. No upload.",
+    "keywords": [
+      "pdf",
+      "png",
+      "jpg",
+      "images",
+      "convert",
+      "render pages",
+      "pdfjs"
+    ]
+  },
+  {
+    "slug": "image-compress",
+    "name": "Image Compress",
+    "category": "Image",
+    "blurb": "Makes images smaller. Pick quality, watch the size.",
+    "description": "Compress JPG, PNG and WebP images in your browser. Adjust quality and maximum size, batch many files, download as ZIP. No upload.",
+    "keywords": [
+      "image",
+      "compress",
+      "reduce size",
+      "jpg",
+      "png",
+      "webp",
+      "optimize",
+      "shrink"
+    ]
+  },
+  {
+    "slug": "image-convert",
+    "name": "Image Convert",
+    "category": "Image",
+    "blurb": "PNG, JPG, WebP and AVIF, in any direction.",
+    "description": "Convert images between PNG, JPG, WebP and AVIF in your browser. Batch many files. No upload.",
+    "keywords": [
+      "image",
+      "convert",
+      "png",
+      "jpg",
+      "webp",
+      "avif",
+      "format"
+    ]
+  },
+  {
+    "slug": "image-resize",
+    "name": "Image Resize and Crop",
+    "category": "Image",
+    "blurb": "Set a size, pick an aspect ratio, crop, save.",
+    "description": "Resize and crop images in your browser: exact pixels or percent, aspect-ratio crops with adjustable position, PNG/JPG/WebP output. No upload.",
+    "keywords": [
+      "image",
+      "resize",
+      "crop",
+      "scale",
+      "dimensions",
+      "aspect ratio"
+    ]
+  },
+  {
+    "slug": "remove-background",
+    "name": "Remove Background",
+    "category": "Image",
+    "blurb": "Cuts the subject out of a photo. The model runs on your device.",
+    "description": "Remove image backgrounds in your browser with an on-device AI model. No upload, no account, no watermark. First use downloads the model from this site once.",
+    "keywords": [
+      "background",
+      "remove",
+      "cutout",
+      "transparent",
+      "png",
+      "ai",
+      "imgly"
+    ]
+  },
+  {
+    "slug": "strip-exif",
+    "name": "Strip EXIF",
+    "category": "Image",
+    "blurb": "Removes location, camera and edit data from photos. Pixels untouched.",
+    "description": "Remove EXIF, GPS, XMP and other hidden metadata from JPEG, PNG and WebP photos without re-encoding. Runs entirely in your browser.",
+    "keywords": [
+      "exif",
+      "metadata",
+      "gps",
+      "privacy",
+      "strip",
+      "remove",
+      "photo"
+    ]
+  },
+  {
+    "slug": "case-converter",
+    "name": "Case Converter",
+    "category": "Text",
+    "blurb": "UPPER, lower, Title, camelCase, snake_case and friends.",
+    "description": "Convert text between upper case, lower case, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case and CONSTANT_CASE.",
+    "keywords": [
+      "uppercase",
+      "lowercase",
+      "title case",
+      "camelcase",
+      "snake case",
+      "kebab"
+    ],
+    "recipe": {
+      "name": "Case Converter",
+      "input": "the quick brown fox\nnothing exciting happens here",
+      "steps": [
+        {
+          "b": "case-convert",
+          "p": {
+            "mode": "title"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "clean-list",
+    "name": "Clean List",
+    "category": "Text",
+    "blurb": "Trim, remove blanks, dedupe and sort a list of lines.",
+    "description": "Clean a list: trim whitespace, remove empty lines, remove duplicates, and sort alphabetically, numerically or by length.",
+    "keywords": [
+      "dedupe",
+      "sort",
+      "unique",
+      "trim",
+      "lines",
+      "remove duplicates"
+    ],
+    "recipe": {
+      "name": "Clean List",
+      "input": "  banana\napple\n\nBanana\ncherry  \napple\n10\n9",
+      "steps": [
+        {
+          "b": "clean-list",
+          "p": {
+            "trim": true,
+            "empty": true,
+            "dedupe": true,
+            "ignoreCase": true,
+            "sort": "az"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "diff",
+    "name": "Diff",
+    "category": "Text",
+    "blurb": "Shows what changed between two pieces of text.",
+    "description": "Compare two texts and see added and removed lines, words or characters. Runs in your browser, nothing is uploaded.",
+    "keywords": [
+      "compare",
+      "difference",
+      "changes",
+      "text diff"
+    ],
+    "recipe": {
+      "name": "Diff",
+      "input": "one\ntwo\nthree\nfour",
+      "steps": [
+        {
+          "b": "diff",
+          "p": {
+            "other": "one\n2\nthree\nfour\nfive",
+            "mode": "lines"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "markdown-preview",
+    "name": "Markdown Preview",
+    "category": "Text",
+    "blurb": "Renders Markdown. Copies the HTML.",
+    "description": "Preview Markdown as it will render and copy the HTML. Runs in your browser, nothing is uploaded.",
+    "keywords": [
+      "markdown",
+      "md",
+      "html",
+      "preview",
+      "render"
+    ],
+    "recipe": {
+      "name": "Markdown Preview",
+      "input": "# Heading\n\nSome *emphasis*, some **weight**, and a [link](https://example.com).\n\n- one\n- two\n\n```js\nconsole.log('boring');\n```\n\n| a | b |\n|---|---|\n| 1 | 2 |",
+      "steps": [
+        {
+          "b": "markdown-html",
+          "p": {
+            "gfm": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "word-count",
+    "name": "Word Count",
+    "category": "Text",
+    "blurb": "Counts words, characters, sentences and reading time.",
+    "description": "Count words, characters, sentences, paragraphs and reading time. Runs in your browser, nothing is uploaded.",
+    "keywords": [
+      "words",
+      "characters",
+      "count",
+      "length",
+      "reading time"
+    ],
+    "recipe": {
+      "name": "Word Count",
+      "input": "The quick brown fox jumps over the lazy dog. Nothing exciting happens here.\n\nA second paragraph, for counting purposes.",
+      "steps": [
+        {
+          "b": "word-count",
+          "p": {}
+        }
+      ]
+    }
+  },
+  {
+    "slug": "csv-excel",
+    "name": "CSV to Excel and back",
+    "category": "Data",
+    "blurb": "Turns CSV into an .xlsx file, or a sheet into CSV.",
+    "description": "Convert CSV to Excel (.xlsx) or Excel to CSV in your browser. Pick the sheet. Nothing is uploaded.",
+    "keywords": [
+      "csv",
+      "excel",
+      "xlsx",
+      "xls",
+      "spreadsheet",
+      "sheetjs"
+    ]
+  },
+  {
+    "slug": "csv-json",
+    "name": "CSV to JSON and back",
+    "category": "Data",
+    "blurb": "Converts CSV to JSON, or JSON to CSV.",
+    "description": "Convert CSV to JSON or JSON to CSV in your browser. Handles quoted fields, custom delimiters and header rows.",
+    "keywords": [
+      "csv",
+      "json",
+      "convert",
+      "papaparse",
+      "spreadsheet"
+    ],
+    "recipe": {
+      "name": "CSV to JSON",
+      "input": "id,name,city\n1,Ada,London\n2,Grace,\"New York, NY\"\n3,Linus,Helsinki",
+      "steps": [
+        {
+          "b": "csv-to-json",
+          "p": {
+            "header": true,
+            "delimiter": "",
+            "types": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "json-formatter",
+    "name": "JSON Formatter",
+    "category": "Data",
+    "blurb": "Formats, minifies and validates JSON, with useful errors.",
+    "description": "Format, minify and validate JSON in your browser. Error messages point at the line and column.",
+    "keywords": [
+      "json",
+      "pretty print",
+      "minify",
+      "validate",
+      "beautify"
+    ],
+    "recipe": {
+      "name": "JSON Formatter",
+      "input": "{\"name\":\"BoringX\",\"tools\":[{\"id\":1,\"dull\":true},{\"id\":2,\"dull\":true}],\"nested\":{\"b\":2,\"a\":1}}",
+      "steps": [
+        {
+          "b": "json-format",
+          "p": {
+            "indent": "2",
+            "sortKeys": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "json-to-typescript",
+    "name": "JSON to TypeScript",
+    "category": "Data",
+    "blurb": "Infers TypeScript interfaces from a JSON sample.",
+    "description": "Generate TypeScript interfaces from a JSON sample. Merges array elements, marks missing keys optional, names nested types.",
+    "keywords": [
+      "typescript",
+      "types",
+      "interface",
+      "json",
+      "quicktype",
+      "generate"
+    ],
+    "recipe": {
+      "name": "JSON to TypeScript",
+      "input": "{\"id\":1,\"name\":\"Ada\",\"tags\":[\"math\",\"code\"],\"address\":{\"city\":\"London\",\"geo\":null},\"orders\":[{\"id\":1,\"total\":9.5},{\"id\":2,\"total\":3,\"note\":\"gift\"}]}",
+      "steps": [
+        {
+          "b": "json-to-ts",
+          "p": {
+            "root": "Root",
+            "exportKw": true,
+            "readonly": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "sql-in-list",
+    "name": "SQL IN List",
+    "category": "Data",
+    "blurb": "Turns a column of values into an IN (...) clause.",
+    "description": "Paste a column from a spreadsheet and get a SQL IN list with correct quoting. Handles numbers, strings and apostrophes.",
+    "keywords": [
+      "sql",
+      "in clause",
+      "list",
+      "where in",
+      "quote",
+      "column"
+    ],
+    "recipe": {
+      "name": "SQL IN List",
+      "input": "1001\n1002\n1003\n1003\n1004",
+      "steps": [
+        {
+          "b": "sql-in-list",
+          "p": {
+            "column": "id",
+            "quote": "auto",
+            "dedupe": true,
+            "perLine": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "base64",
+    "name": "Base64",
+    "category": "Dev",
+    "blurb": "Encodes and decodes Base64, UTF-8 safe.",
+    "description": "Encode text to Base64 or decode Base64 to text. UTF-8 safe, with URL-safe option. Runs in your browser.",
+    "keywords": [
+      "base64",
+      "encode",
+      "decode",
+      "utf-8",
+      "atob",
+      "btoa"
+    ],
+    "recipe": {
+      "name": "Base64",
+      "input": "Nothing exciting happens here.",
+      "steps": [
+        {
+          "b": "base64",
+          "p": {
+            "mode": "encode",
+            "urlSafe": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hash",
+    "name": "Hash",
+    "category": "Dev",
+    "blurb": "SHA-256, SHA-1, MD5 and more, of text.",
+    "description": "Hash text with SHA-256, SHA-1, SHA-512 or MD5 in your browser. For files, use File Checksum.",
+    "keywords": [
+      "hash",
+      "sha256",
+      "sha1",
+      "md5",
+      "checksum",
+      "digest"
+    ],
+    "recipe": {
+      "name": "Hash",
+      "input": "Nothing exciting happens here.",
+      "steps": [
+        {
+          "b": "hash",
+          "p": {
+            "algo": "SHA-256",
+            "upper": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "jwt-decoder",
+    "name": "JWT Decoder",
+    "category": "Dev",
+    "blurb": "Reads a JWT's header and claims. Does not verify the signature.",
+    "description": "Decode a JSON Web Token to see its header and claims, with human-readable expiry. Nothing is sent anywhere.",
+    "keywords": [
+      "jwt",
+      "json web token",
+      "decode",
+      "claims",
+      "bearer",
+      "auth"
+    ],
+    "recipe": {
+      "name": "JWT Decoder",
+      "input": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSBMb3ZlbGFjZSIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNTE2MjQyNjIyfQ.sig",
+      "steps": [
+        {
+          "b": "jwt-decode",
+          "p": {}
+        }
+      ]
+    }
+  },
+  {
+    "slug": "regex-tester",
+    "name": "Regex Tester",
+    "category": "Dev",
+    "blurb": "Tests a JavaScript regex against text. Lists matches or replaces.",
+    "description": "Test JavaScript regular expressions live: see every match with index and capture groups, or run a replace.",
+    "keywords": [
+      "regex",
+      "regular expression",
+      "match",
+      "replace",
+      "javascript",
+      "test"
+    ],
+    "recipe": {
+      "name": "Regex Tester",
+      "input": "ada@example.com, grace@navy.mil, not-an-email, linus@kernel.org",
+      "steps": [
+        {
+          "b": "regex",
+          "p": {
+            "pattern": "(\\w+)@([\\w.]+)",
+            "flags": "g",
+            "mode": "matches",
+            "replacement": "$2: $1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "url-encode",
+    "name": "URL Encode/Decode",
+    "category": "Dev",
+    "blurb": "Percent-encodes and decodes URLs and query values.",
+    "description": "Encode or decode URLs and query string values with percent-encoding. Runs in your browser.",
+    "keywords": [
+      "url",
+      "encode",
+      "decode",
+      "percent",
+      "query string",
+      "uri"
+    ],
+    "recipe": {
+      "name": "URL Encode",
+      "input": "https://example.com/search?q=boring tools & more&lang=fr é",
+      "steps": [
+        {
+          "b": "url-code",
+          "p": {
+            "mode": "encode",
+            "scope": "component"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "filler-text",
+    "name": "Filler Text",
+    "category": "Generate",
+    "blurb": "Lorem ipsum by the paragraph, sentence or word.",
+    "description": "Generate lorem ipsum placeholder text by paragraphs, sentences or words. Runs in your browser.",
+    "keywords": [
+      "lorem ipsum",
+      "placeholder",
+      "dummy text",
+      "filler",
+      "generate"
+    ],
+    "recipe": {
+      "name": "Filler Text",
+      "input": "",
+      "steps": [
+        {
+          "b": "lorem",
+          "p": {
+            "unit": "paragraphs",
+            "count": 3,
+            "classic": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "password",
+    "name": "Password",
+    "category": "Generate",
+    "blurb": "Random passwords from the browser's secure generator.",
+    "description": "Generate strong random passwords using your browser's cryptographic random number generator. Nothing leaves your device.",
+    "keywords": [
+      "password",
+      "random",
+      "secure",
+      "generator",
+      "strong"
+    ],
+    "recipe": {
+      "name": "Password",
+      "input": "",
+      "steps": [
+        {
+          "b": "password",
+          "p": {
+            "length": 20,
+            "count": 3,
+            "lower": true,
+            "upper": true,
+            "digits": true,
+            "symbols": true,
+            "ambiguous": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "placeholder-image",
+    "name": "Placeholder Image",
+    "category": "Generate",
+    "blurb": "A flat rectangle with its size written on it. SVG or PNG.",
+    "description": "Generate placeholder images of any size and colour, as SVG or PNG, without requesting them from a server.",
+    "keywords": [
+      "placeholder",
+      "dummy image",
+      "image",
+      "size",
+      "mock",
+      "svg"
+    ],
+    "recipe": {
+      "name": "Placeholder Image",
+      "input": "",
+      "steps": [
+        {
+          "b": "placeholder-svg",
+          "p": {
+            "width": 800,
+            "height": 450,
+            "bg": "#cfcdc6",
+            "fg": "#3b3b38"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "qr-code",
+    "name": "QR Code",
+    "category": "Generate",
+    "blurb": "Makes a QR code from text or a link. SVG or PNG.",
+    "description": "Generate QR codes from text or URLs in your browser and download them as SVG or PNG. No tracking, no expiry.",
+    "keywords": [
+      "qr",
+      "qr code",
+      "barcode",
+      "link",
+      "generate"
+    ],
+    "recipe": {
+      "name": "QR Code",
+      "input": "https://boringx.vercel.app",
+      "steps": [
+        {
+          "b": "qr-svg",
+          "p": {
+            "ecc": "M",
+            "margin": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "uuid",
+    "name": "UUID",
+    "category": "Generate",
+    "blurb": "Generates v4 or v7 UUIDs in bulk.",
+    "description": "Generate random v4 or time-ordered v7 UUIDs in your browser, in bulk, with format options.",
+    "keywords": [
+      "uuid",
+      "guid",
+      "v4",
+      "v7",
+      "random id",
+      "generate"
+    ],
+    "recipe": {
+      "name": "UUID",
+      "input": "",
+      "steps": [
+        {
+          "b": "uuid",
+          "p": {
+            "count": 5,
+            "version": "v4",
+            "upper": false,
+            "hyphens": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "color",
+    "name": "Color",
+    "category": "Convert",
+    "blurb": "HEX, RGB, HSL and OKLCH, with contrast ratios.",
+    "description": "Convert colours between HEX, RGB, HSL and OKLCH, and check contrast against white and black (WCAG).",
+    "keywords": [
+      "color",
+      "colour",
+      "hex",
+      "rgb",
+      "hsl",
+      "oklch",
+      "contrast"
+    ],
+    "recipe": {
+      "name": "Color",
+      "input": "#1f3fa8",
+      "steps": [
+        {
+          "b": "color",
+          "p": {}
+        }
+      ]
+    }
+  },
+  {
+    "slug": "number-base",
+    "name": "Number Base",
+    "category": "Convert",
+    "blurb": "Binary, octal, decimal, hex and any base to 36. Big numbers too.",
+    "description": "Convert numbers between binary, octal, decimal, hexadecimal and any base up to 36. Handles arbitrarily large integers.",
+    "keywords": [
+      "binary",
+      "hex",
+      "octal",
+      "decimal",
+      "base",
+      "convert",
+      "radix"
+    ],
+    "recipe": {
+      "name": "Number Base",
+      "input": "255\n0xFF\n0b1010\n0o777\n123456789012345678901234567890",
+      "steps": [
+        {
+          "b": "number-base",
+          "p": {
+            "from": 10,
+            "custom": 36
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "time-zone",
+    "name": "Time Zone",
+    "category": "Convert",
+    "blurb": "Converts a clock time from one zone to several others.",
+    "description": "Convert a date and time between time zones, including daylight saving. Pick a source zone and list the zones you need.",
+    "keywords": [
+      "time zone",
+      "timezone",
+      "convert",
+      "utc",
+      "dst",
+      "meeting"
+    ],
+    "recipe": {
+      "name": "Time Zone",
+      "input": "2026-03-08 09:00",
+      "steps": [
+        {
+          "b": "timezone",
+          "p": {
+            "from": "America/Halifax",
+            "to": "UTC, America/Los_Angeles, Europe/London, Asia/Tokyo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "units",
+    "name": "Units",
+    "category": "Convert",
+    "blurb": "Length, mass, volume, speed, area, data, time and temperature.",
+    "description": "Convert units of length, mass, volume, area, speed, data size, time and temperature. Write '10 km to mi' or just '10 km' to see every unit.",
+    "keywords": [
+      "units",
+      "convert",
+      "metric",
+      "imperial",
+      "length",
+      "weight",
+      "temperature"
+    ],
+    "recipe": {
+      "name": "Units",
+      "input": "10 km to mi\n72 f to c\n5 lb to kg\n1 gb to mb\n100 km/h to mph\n2 cups",
+      "steps": [
+        {
+          "b": "units",
+          "p": {
+            "precision": 4
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "unix-timestamp",
+    "name": "Unix Timestamp",
+    "category": "Convert",
+    "blurb": "Converts epoch seconds or milliseconds to dates, and dates to epoch.",
+    "description": "Convert Unix timestamps (seconds or milliseconds) to readable dates and back. Shows UTC, a time zone of your choice, and relative time.",
+    "keywords": [
+      "unix",
+      "epoch",
+      "timestamp",
+      "date",
+      "milliseconds",
+      "time"
+    ],
+    "recipe": {
+      "name": "Unix Timestamp",
+      "input": "1700000000\n1700000000000\n2026-01-01T00:00:00Z\nnow",
+      "steps": [
+        {
+          "b": "timestamp",
+          "p": {
+            "tz": "UTC"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "favicon-generator",
+    "name": "Favicon Generator",
+    "category": "Files",
+    "blurb": "One image in; favicon.ico, PNG sizes, touch icon and HTML out.",
+    "description": "Generate a complete favicon set from one image in your browser: favicon.ico, 16/32/48 PNG, Apple touch icon, Android icons and the HTML tags.",
+    "keywords": [
+      "favicon",
+      "icon",
+      "ico",
+      "apple touch icon",
+      "pwa",
+      "generate"
+    ]
+  },
+  {
+    "slug": "file-checksum",
+    "name": "File Checksum",
+    "category": "Files",
+    "blurb": "SHA-256, SHA-1, SHA-512 and MD5 of any file. Compare to a known hash.",
+    "description": "Compute SHA-256, SHA-1, SHA-512 and MD5 checksums of files in your browser and compare them to a published hash. The file never leaves your device.",
+    "keywords": [
+      "checksum",
+      "hash",
+      "sha256",
+      "md5",
+      "verify",
+      "integrity",
+      "file"
+    ]
+  },
+  {
+    "slug": "ocr",
+    "name": "OCR",
+    "category": "Files",
+    "blurb": "Reads text out of an image. English, on your device.",
+    "description": "Extract text from images (OCR) in your browser with Tesseract. English language. No upload; the engine and language data are served from this site.",
+    "keywords": [
+      "ocr",
+      "image to text",
+      "tesseract",
+      "extract text",
+      "scan",
+      "text recognition"
+    ]
+  },
+  {
+    "slug": "svg-to-png",
+    "name": "SVG to PNG",
+    "category": "Files",
+    "blurb": "Rasterises an SVG at the size you want.",
+    "description": "Convert SVG to PNG at any size or scale in your browser, with transparent or solid background. No upload.",
+    "keywords": [
+      "svg",
+      "png",
+      "convert",
+      "rasterize",
+      "export",
+      "vector"
+    ]
+  },
+  {
+    "slug": "zip",
+    "name": "Zip and Unzip",
+    "category": "Files",
+    "blurb": "Makes a .zip from files, or opens one and lets you save parts.",
+    "description": "Create ZIP archives or open and extract them in your browser. No upload, no size limit beyond your memory.",
+    "keywords": [
+      "zip",
+      "unzip",
+      "archive",
+      "extract",
+      "compress",
+      "files"
+    ]
+  }
+]
