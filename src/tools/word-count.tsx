@@ -26,7 +26,8 @@ export function countText(s: string) {
     if (ch === "\n") newlines += 1;
     else if (!/\s/.test(ch)) charactersNoSpaces += 1;
   }
-  const sentences = (s.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) ?? []).filter((x) => x.trim()).length;
+  // A sentence needs a letter or digit: "... !!!" is punctuation, not a sentence.
+  const sentences = (s.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) ?? []).filter((x) => /[\p{L}\p{N}]/u.test(x)).length;
   const paragraphs = s.split(/\n\s*\n/).filter((x) => x.trim()).length;
   return {
     words,
