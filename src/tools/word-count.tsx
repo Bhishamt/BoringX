@@ -15,17 +15,26 @@ export const meta: ToolMeta = {
 
 export function countText(s: string) {
   // Word-aware segmentation: punctuation, symbols and emoji are not word-like.
-  const segments = new Intl.Segmenter(undefined, { granularity: "word" }).segment(s);
-  const words = [...segments].filter((x) => x.isWordLike).length;
+  // Counted as the iterator yields: a punctuation-heavy input produces one segment
+  // per symbol, so holding them in an array costs as much memory as the input again.
+  let words = 0;
+  for (const seg of new Intl.Segmenter(undefined, { granularity: "word" }).segment(s)) if (seg.isWordLike) words += 1;
+  // One pass over the code points keeps the astral counting the spread had without the arrays.
+  let characters = 0, charactersNoSpaces = 0, newlines = 0;
+  for (const ch of s) {
+    characters += 1;
+    if (ch === "\n") newlines += 1;
+    else if (!/\s/.test(ch)) charactersNoSpaces += 1;
+  }
   const sentences = (s.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) ?? []).filter((x) => x.trim()).length;
   const paragraphs = s.split(/\n\s*\n/).filter((x) => x.trim()).length;
   return {
     words,
-    characters: [...s].length,
-    charactersNoSpaces: [...s.replace(/\s/g, "")].length,
+    characters,
+    charactersNoSpaces,
     sentences,
     paragraphs,
-    lines: s === "" ? 0 : s.split("\n").length,
+    lines: s === "" ? 0 : newlines + 1,
     readingMinutes: words / 238,
   };
 }
