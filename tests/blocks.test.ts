@@ -19,9 +19,19 @@ describe("text blocks", () => {
     // punctuation, symbols and emoji are not words
     expect(await run("word-count", "... !!! 🦆")).toMatch(/Words:\s+0/);
     expect(await run("word-count", "👨‍👩‍👧‍👦")).toMatch(/Words:\s+0/);
+    // punctuation-only input has no sentences either
+    expect(await run("word-count", "... !!! 🦆")).toMatch(/Sentences:\s+0/);
     // non-Latin scripts and text without spaces
     expect(await run("word-count", "Сәлем әлем")).toMatch(/Words:\s+2/);
     expect(await run("word-count", "日本語")).toMatch(/Words:\s+1/);
+    // astral characters count once each, and lines keep a trailing newline's line
+    expect(await run("word-count", "😀🤙")).toMatch(/Characters:\s+2/);
+    expect(await run("word-count", "a\nb\n")).toMatch(/Lines:\s+3/);
+    // a punctuation-heavy input must be counted without holding a segment per symbol
+    const noisy = await run("word-count", "!?.,;:".repeat(50_000));
+    expect(noisy).toMatch(/Words:\s+0/);
+    expect(noisy).toMatch(/Sentences:\s+0/);
+    expect(noisy).toMatch(/Characters:\s+300000/);
   });
   it("case-convert", async () => {
     expect(await run("case-convert", "hello big world", { mode: "upper" })).toBe("HELLO BIG WORLD");
