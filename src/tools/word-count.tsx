@@ -27,8 +27,22 @@ export function countText(s: string) {
     else if (!/\s/.test(ch)) charactersNoSpaces += 1;
   }
   // A sentence needs a letter or digit: "... !!!" is punctuation, not a sentence.
-  const sentences = (s.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) ?? []).filter((x) => /[\p{L}\p{N}]/u.test(x)).length;
-  const paragraphs = s.split(/\n\s*\n/).filter((x) => x.trim()).length;
+  // Matched one at a time, because match() copies every sentence out of the input first.
+  let sentences = 0;
+  const sentenceRe = /[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g;
+  for (let m; (m = sentenceRe.exec(s));) if (/[\p{L}\p{N}]/u.test(m[0])) sentences += 1;
+  // Paragraphs are the segments between blank lines that hold any content, counted as
+  // they are walked instead of split into an array of copies.
+  let paragraphs = 0, inContent = false, sawNewline = false;
+  for (const ch of s) {
+    if (ch === "\n") {
+      if (sawNewline) inContent = false; // a second newline, blank line between: the segment ends
+      sawNewline = true;
+    } else if (!/\s/.test(ch)) {
+      if (!inContent) { paragraphs += 1; inContent = true; }
+      sawNewline = false;
+    }
+  }
   return {
     words,
     characters,

@@ -27,6 +27,11 @@ describe("text blocks", () => {
     // astral characters count once each, and lines keep a trailing newline's line
     expect(await run("word-count", "😀🤙")).toMatch(/Characters:\s+2/);
     expect(await run("word-count", "a\nb\n")).toMatch(/Lines:\s+3/);
+    // blank-line separators: the same paragraphs whether the file is written with CRLF
+    // or a stray space sits between the newlines, and a white run is no paragraph
+    expect(await run("word-count", "a\r\n\r\nb\r\n\r\n\r\nc")).toMatch(/Paragraphs:\s+3/);
+    expect(await run("word-count", "a\n \n b")).toMatch(/Paragraphs:\s+2/);
+    expect(await run("word-count", "   ")).toMatch(/Paragraphs:\s+0/);
     // a punctuation-heavy input must be counted without holding a segment per symbol
     const noisy = await run("word-count", "!?.,;:".repeat(50_000));
     expect(noisy).toMatch(/Words:\s+0/);
